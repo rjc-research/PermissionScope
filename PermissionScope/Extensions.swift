@@ -23,6 +23,14 @@ extension UIColor {
 extension String {
     /// NSLocalizedString shorthand
     var localized: String {
+        let userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let array: NSArray = userDefaults.objectForKey("AppleLanguages") as! NSArray
+        let currentLanguage: String = array.objectAtIndex(0) as! String
+        
+        if let path = NSBundle.mainBundle().pathForResource(currentLanguage, ofType: "lproj"), bundle = NSBundle(path: path) {
+            return bundle.localizedStringForKey(self, value: nil, table: nil)
+        }
+        
         return NSLocalizedString(self, comment: "")
     }
 }

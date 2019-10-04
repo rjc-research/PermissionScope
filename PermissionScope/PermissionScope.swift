@@ -1151,8 +1151,6 @@ typealias resultsForConfigClosure     = ([PermissionResult]) -> Void
             permissionStatus = statusReminders()
         case .events:
             permissionStatus = statusEvents()
-        case .bluetooth:
-            return
         case .motion:
             permissionStatus = statusMotion()
         }

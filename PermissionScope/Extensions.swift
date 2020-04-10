@@ -26,7 +26,7 @@ extension String {
         let userDefaults = UserDefaults.standard
         let array: NSArray = userDefaults.object(forKey: "AppleLanguages") as! NSArray
         let currentLanguage: String = array.object(at: 0) as! String
-        
+
         if let path = Bundle.main.path(forResource: currentLanguage, ofType: "lproj"), let bundle = Bundle(path: path) {
             return bundle.localizedString(forKey: self, value: nil, table: nil)
         }
